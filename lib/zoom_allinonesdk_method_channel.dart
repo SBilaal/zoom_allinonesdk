@@ -25,7 +25,7 @@ class MethodChannelZoomAllInOneSdk extends ZoomAllInOneSdkPlatform {
       String jwtSignature = jwtGenerator.generate(
           key: options.clientId ?? "", secret: options.clientSecert ?? "");
       final optionsMap = <String, dynamic>{
-        ZoomConstants.jwtToken: jwtSignature,
+        ZoomConstants.jwtToken: options.jwtSignature,
         ZoomConstants.domain: options.domain,
       };
 
