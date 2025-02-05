@@ -22,10 +22,10 @@ class MethodChannelZoomAllInOneSdk extends ZoomAllInOneSdkPlatform {
   @override
   Future<List> initZoom({required ZoomOptions options}) async {
     try {
-      String jwtSignature = jwtGenerator.generate(
+      String? jwtSignature = options.clientId == null || options.clientSecert == null ? null : jwtGenerator.generate(
           key: options.clientId ?? "", secret: options.clientSecert ?? "");
       final optionsMap = <String, dynamic>{
-        ZoomConstants.jwtToken: options.jwtSignature,
+        ZoomConstants.jwtToken: jwtSignature ?? options.jwtSignature,
         ZoomConstants.domain: options.domain,
       };
 
